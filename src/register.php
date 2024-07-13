@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/src/helpers.php';
+require_once __DIR__ . '/helpers/helpers.php';
 checkGuest();
 ?>
 
@@ -8,7 +8,7 @@ checkGuest();
 <?php include_once __DIR__ . '/components/head.php'?>
 <body>
 
-<form class="card" action="./src/actions/register.php" method="post" enctype="multipart/form-data">
+<form class="card" action="./actions/register.php" method="post" enctype="multipart/form-data">
     <h2>Регистрация</h2>
 
     <?php if(hasMessage('error')): ?>

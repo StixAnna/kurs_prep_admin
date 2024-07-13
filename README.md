@@ -20,8 +20,8 @@
 ```shell
 docker-compose up --build 
 ``` 
-http://localhost:8080 - сайт
-http://localhost:3311 - база данных
+- http://localhost:8080 - сайт
+- localhost:3311 - база данных
 
 ### База данных
 

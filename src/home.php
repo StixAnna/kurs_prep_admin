@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/src/helpers.php';
+require_once __DIR__ . '/helpers/helpers.php';
 checkAuth();
 $user = currentUser();
 
@@ -75,7 +75,7 @@ $selectabtlnk = "SELECT * FROM zadania_link_to_student";
         alt="<?php echo $user['name'] ?>"
     >
         <h1 style="margin-top: 15px;">Привет, <?php echo $user['name'] ?>!</h1>
-        <form action="./src/actions/logout.php" method="post">
+        <form action="./actions/logout.php" method="post">
             <button role="button">Выйти из аккаунта</button>
         </form>
         <?php 

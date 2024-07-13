@@ -2,8 +2,6 @@
 
 session_start();
 
-// $env = parse_ini_file(__DIR__ .'/.env');
-
 $dbHost = getenv('DB_HOST') ?: 'mysql-db';
 $dbPort = getenv('DB_PORT') ?: '3311';
 $username = getenv('DB_USERNAME');

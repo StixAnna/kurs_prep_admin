@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '../../helpers.php';
+require_once __DIR__ . '/../helpers/helpers.php';
 
 $email = $_POST['email'] ?? null;
 $password = $_POST['password'] ?? null;

@@ -3,7 +3,7 @@ body {
     flex-wrap: nowrap;
     flex-direction: column;
     align-items: center;
-    background-image: url("../src/avatar_1703675963.jpg");
+    background-image: url("../backgroundimg.jpg");
     background-position: center;
     height: 2100px;
 }
