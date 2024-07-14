@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__ . '/helpers/helpers.php';
+require_once __DIR__ . '/helpers/functions.php';
+require_once __DIR__ . '/helpers/envdefine.php';
 checkAuth();
 $user = currentUser();
 

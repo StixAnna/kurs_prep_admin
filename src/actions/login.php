@@ -1,6 +1,7 @@
 <?php
 
-require_once __DIR__ . '/../helpers/helpers.php';
+require_once __DIR__ . '/../helpers/functions.php';
+require_once __DIR__ . '/../helpers/envdefine.php';
 
 $email = $_POST['email'] ?? null;
 $password = $_POST['password'] ?? null;

@@ -1,30 +1,5 @@
 <?php
 
-session_start();
-
-$dbHost = getenv('DB_HOST') ?: 'mysql-db';
-$dbPort = getenv('DB_PORT') ?: '3311';
-$username = getenv('DB_USERNAME');
-$password = getenv('DB_PASSWORD');
-$database = getenv('DB_DATABASE');
-
-if (!$username || !$password || !$database) {
-    echo 'One or more required environment variables are missing';
-    echo 'DB_USERNAME: ' . ($username ? 'set' : 'missing') . PHP_EOL;
-    echo 'DB_PASSWORD: ' . ($password ? 'set' : 'missing') . PHP_EOL;
-    echo 'DB_DATABASE: ' . ($database ? 'set' : 'missing') . PHP_EOL;
-    die();
-}
-
-define('DB_HOST', $dbHost);
-define('DB_PORT', $dbPort);
-define('DB_USERNAME', $username);
-define('DB_PASSWORD', $password);
-define('DB_DATABASE', $database);
-
-// Use these constants for your database connection
-
-
 function redirect(string $path)
 {
     header("Location: $path");
@@ -153,5 +128,27 @@ function checkGuest(): void
 {
     if (isset($_SESSION['user']['id'])) {
         redirect('./home.php');
+    }
+}
+
+function loadEnv($path = __DIR__ . '/../../.env') {
+    if (!file_exists($path)) 
+        throw new Exception("Файл .env не найден: " . $path);
+
+    $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        // Пропускаем комментарии
+        if (strpos(trim($line), '#') === 0) 
+            continue;
+
+        list($name, $value) = explode('=', $line, 2);
+        $name = trim($name);
+        $value = trim($value);
+
+        if (!array_key_exists($name, $_SERVER) && !array_key_exists($name, $_ENV)) {
+            putenv(sprintf('%s=%s', $name, $value));
+            $_ENV[$name] = $value;
+            $_SERVER[$name] = $value;
+        }
     }
 }
